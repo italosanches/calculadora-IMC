@@ -28,8 +28,15 @@
           <input type="text" name="peso" id="input-peso" placeholder="Peso" class="input-default">
         </div>
       </div>
-      <div id="container-result" class="hide">
-        <h2>Seu IMC é <span>s</span></h2>
+      <div id="container-result" class="">
+        <h2>Seu IMC é <span class="imc-situation"></span></h2>
+        <table class="container result-table">
+          <tr>
+            <th>IMC</th>
+            <th>Classificação</th>
+            <th>Obesidade</th>
+          </tr>
+        </table>
       </div>
       <span class="error-information hide">Valores invalidos</span>
       <div class="container-buttons">

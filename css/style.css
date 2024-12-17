@@ -1,70 +1,87 @@
 * {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  box-sizing: content-box;
-  font-family: Roboto;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	box-sizing: content-box;
+	font-family: Roboto;
 }
 body {
-  background-color: rgb(80, 74, 74);
+	background-color: rgb(80, 74, 74);
 }
 [hidden] {
-  display: none;
+	display: none;
 }
 
 main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
 }
 .hide {
-  display: none !important;
+	display: none !important;
+}
+.container {
+	width: 100%;
 }
 .container-imc {
-  background-color: #180583a8;
-  width: 360px;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  color: white;
+	background-color: #180583a8;
+	width: 360px;
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	color: white;
 }
 .container-imc h1 {
-  text-align: center;
+	text-align: center;
 }
 #container-calc {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
 #container-result {
 }
 .container-input {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 .label-default {
-  font-size: 1.4rem;
-  font-weight: bold;
+	font-size: 1.4rem;
+	font-weight: bold;
 }
 .input-default {
-  padding: 1rem;
+	padding: 1rem;
 }
 .container-buttons {
-  display: flex;
-  gap: 3rem;
+	display: flex;
+	gap: 3rem;
 }
 .button-default {
-  flex: 1;
-  padding: 1rem;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  color: #ffff;
+	flex: 1;
+	padding: 1rem;
+	border: none;
+	font-weight: bold;
+	cursor: pointer;
+	color: #ffff;
 }
 
 .error-information {
-  text-align: center;
-  color: red;
+	text-align: center;
+	color: red;
+}
+
+.result-table {
+	text-align: left;
+}
+
+table,
+th,
+td {
+	border: 1px solid #ffff;
+	/* padding: 2px; */
+}
+td {
+	padding: 4px;
 }
