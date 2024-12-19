@@ -8,9 +8,6 @@
 body {
 	background-color: rgb(80, 74, 74);
 }
-[hidden] {
-	display: none;
-}
 
 main {
 	display: flex;
@@ -42,6 +39,9 @@ main {
 	gap: 20px;
 }
 #container-result {
+	display: flex;
+	flex-flow: column wrap;
+	gap: 1rem;
 }
 .container-input {
 	display: flex;
@@ -54,7 +54,8 @@ main {
 .input-default {
 	padding: 1rem;
 }
-.container-buttons {
+.container-buttons,
+.container-buttons-return {
 	display: flex;
 	gap: 3rem;
 }
@@ -76,6 +77,13 @@ main {
 	text-align: left;
 }
 
+.title-imc-result {
+	text-align: center;
+}
+.imc-result,
+.imc-info {
+	color: yellow;
+}
 table,
 th,
 td {

@@ -36,28 +36,12 @@ const dataImc = [
 	},
 ];
 
-document.querySelector("#btn-calcular").addEventListener("click", (e) => {
-	const spanError = document.querySelector(".error-information");
-	let resultimc = calculateIMC();
-	if (isNaN(resultimc)) {
-		spanError.classList.remove("hide");
-		return;
-	}
-	spanError.classList.add("hide");
-
-	const imcVerified = verifyImc(resultimc);
-	console.log(imcVerified);
-	populateDivImcResult(imcVerified);
-});
-document.querySelector("#btn-Limpar").addEventListener("click", (e) => {
-	e.preventDefault();
-	clearInputs();
-});
+document.querySelector("#btn-calcular").addEventListener("click", generateDivResult);
+document.querySelector("#btn-Limpar").addEventListener("click", clearInputs);
+document.querySelector("#btn-return").addEventListener("click", toggleHtml);
 
 function calculateIMC() {
-	const altura = +document
-		.querySelector("#input-altura")
-		.value.replace(",", ".");
+	const altura = +document.querySelector("#input-altura").value.replace(",", ".");
 	const peso = +document.querySelector("#input-peso").value.replace(",", ".");
 	// console.log(peso, altura);
 	if (!altura || !peso) {
@@ -73,16 +57,19 @@ function clearInputs() {
 }
 
 function verifyImc(imc) {
+	console.log(imc);
 	for (const e of dataImc) {
-		if (imc > e.min && imc < e.max) {
-			return e.info;
+		if (imc >= e.min && imc <= e.max) {
+			return e;
 		}
 	}
 	return null;
 }
 
-function populateDivImcResult(imcVerified) {
-	document.querySelector(".imc-situation").textContent = imcVerified;
+function populateDivImcResult(imcVerified, resultimc) {
+	clearTableImc();
+	document.querySelector(".imc-result").textContent = resultimc;
+	document.querySelector(".imc-info").textContent = imcVerified.info;
 
 	for (const e of dataImc) {
 		// resultRowTable.appendChild(document.createElement("tr"));
@@ -93,6 +80,7 @@ function populateDivImcResult(imcVerified) {
 function populateTable(classificacao, info, obesidade) {
 	const resultRowTable = document.querySelector(".result-table");
 	const tr = document.createElement("tr");
+	tr.classList.add("xx");
 	const tdClassificacao = document.createElement("td");
 	const tdInfo = document.createElement("td");
 	const tdObesidade = document.createElement("td");
@@ -105,4 +93,36 @@ function populateTable(classificacao, info, obesidade) {
 	tr.appendChild(tdClassificacao);
 	tr.appendChild(tdInfo);
 	tr.appendChild(tdObesidade);
+}
+
+function toggleHtml() {
+	document.querySelector("#container-calc").classList.toggle("hide");
+	document.querySelector("#container-result").classList.toggle("hide");
+	document.querySelector(".container-buttons").classList.toggle("hide");
+	document.querySelector(".container-buttons-return").classList.toggle("hide");
+	clearInputs();
+}
+
+function generateDivResult() {
+	const spanError = document.querySelector(".error-information");
+	let resultimc = calculateIMC();
+	if (isNaN(resultimc)) {
+		spanError.classList.remove("hide");
+		return;
+	}
+	spanError.classList.add("hide");
+	const imcVerified = verifyImc(resultimc);
+	if (!imcVerified) {
+		spanError.classList.remove("hide");
+		return;
+	}
+	populateDivImcResult(imcVerified, resultimc);
+	toggleHtml();
+}
+
+function clearTableImc() {
+	let tr = document.querySelectorAll(".xx");
+	if (tr.length > 0) {
+		tr.forEach((row) => row.remove());
+	}
 }

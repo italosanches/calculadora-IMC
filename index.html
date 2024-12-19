@@ -28,8 +28,9 @@
           <input type="text" name="peso" id="input-peso" placeholder="Peso" class="input-default">
         </div>
       </div>
-      <div id="container-result" class="">
-        <h2>Seu IMC é <span class="imc-situation"></span></h2>
+      <div id="container-result" class="hide">
+        <h2 class="title-imc-result">Seu IMC é <span class="imc-result"></span></h2>
+        <h2 class="title-imc-result">Situação atual: <span class="imc-info"></span></h2>
         <table class="container result-table">
           <tr>
             <th>IMC</th>
@@ -42,6 +43,9 @@
       <div class="container-buttons">
         <button class="button-default" style="background-color: rgb(11, 90, 90);" id="btn-calcular">Calcular</button>
         <button class="button-default" style="background-color: black;" id="btn-Limpar">Limpar</button>
+      </div>
+      <div class="container-buttons-return hide">
+        <button class="button-default" style="background-color: rgb(99, 235, 9);" id="btn-return">Voltar</button>
       </div>
     </div>
   </main>
